@@ -132,17 +132,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     
     @IBAction func shareImage(_ sender: Any) {
         let memedImage = generateMemedImage()
-        let meme = Meme(
-            topText: topTextField.text!,
-            bottomText: bottomTextField.text!,
-            originalImage: imageView.image!,
-            memedImage: memedImage
-        )
-        
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         controller.completionWithItemsHandler = { activity, completed, items, error in
             if completed {
-               self.save()
+               self.save(memedImage: memedImage)
                self.dismiss(animated: true, completion: nil)
             }
         }
@@ -150,8 +143,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         present(controller, animated: true, completion: nil)
     }
     
-    func save() {
-        
+    func save(memedImage: UIImage) {
+        let meme = Meme(
+            topText: topTextField.text!,
+            bottomText: bottomTextField.text!,
+            originalImage: imageView.image!,
+            memedImage: memedImage
+        )
     }
     
     func generateMemedImage() -> UIImage {
