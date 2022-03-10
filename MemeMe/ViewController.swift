@@ -24,11 +24,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
-        setUpTextField(topTextField)
-        topTextField.text = "TOP"
-        
-        setUpTextField(bottomTextField)
-        bottomTextField.text = "BOTTOM"
+        setUpTextField(topTextField, text: "TOP")
+        setUpTextField(bottomTextField, text: "BOTTOM")
         
         subscribeToKeyboardNotifications()
     }
@@ -118,19 +115,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         return keyboardSize.cgRectValue.height
     }
     
-    func setUpTextField(_ textField: UITextField) {
-        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        
-        let memeTextAttributes: [NSAttributedString.Key: Any] = [
+    func setUpTextField(_ textField: UITextField, text: String) {
+        textField.defaultTextAttributes = [
             NSAttributedString.Key.strokeColor: UIColor.black,
             NSAttributedString.Key.foregroundColor: UIColor.white,
             NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSAttributedString.Key.strokeWidth:  -1,
-            NSAttributedString.Key.paragraphStyle: paragraphStyle
+            NSAttributedString.Key.strokeWidth:  -4.0
         ]
         
-        textField.defaultTextAttributes = memeTextAttributes
+        textField.textColor = UIColor.white
+        textField.tintColor = UIColor.white
+        textField.textAlignment = .center
+        textField.text = text
         textField.delegate = self
     }
     
