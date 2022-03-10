@@ -21,7 +21,7 @@
                                     <constraint firstAttribute="height" constant="44" id="Fct-qu-7Vj"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="NZA-DF-jmb">
+                                    <barButtonItem systemItem="action" id="NZA-DF-jmb">
                                         <connections>
                                             <action selector="shareImage:" destination="BYZ-38-t0r" id="SJ4-h0-DaJ"/>
                                         </connections>
@@ -104,7 +104,4 @@
             <point key="canvasLocation" x="18.840579710144929" y="71.651785714285708"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
-    </resources>
 </document>

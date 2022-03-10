@@ -140,7 +140,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         )
         
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        controller.completionWithItemsHandler = { activity, completed, items, error in
+            if completed {
+               self.save()
+               self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
         present(controller, animated: true, completion: nil)
+    }
+    
+    func save() {
+        
     }
     
     func generateMemedImage() -> UIImage {
