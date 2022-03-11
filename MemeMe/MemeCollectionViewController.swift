@@ -14,6 +14,8 @@ class MemeCollectionViewController: UICollectionViewController {
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet var memeCollectionView: UICollectionView!
     
+    let imageDimension = 150.0
+    
     var memes: [Meme]! {
         let appDelegate = UIApplication.shared.delegate  as! AppDelegate
         return appDelegate.memes
@@ -21,9 +23,11 @@ class MemeCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let numOfImages = getNumOfImagesPerRow()
+        
         let space:CGFloat = 3.0
-        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        let dimension = getCellDimension(numberOfImages: numOfImages, space: space)
 
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
@@ -56,5 +60,19 @@ class MemeCollectionViewController: UICollectionViewController {
         let controller = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func getNumOfImagesPerRow() -> CGFloat {
+        if UIDevice.current.orientation.isLandscape {
+            return CGFloat(floor(view.frame.size.width / imageDimension))
+        }
+        return CGFloat(floor(view.frame.size.height / imageDimension))
+    }
+    
+    func getCellDimension(numberOfImages: CGFloat, space: CGFloat) -> CGFloat {
+        if UIDevice.current.orientation.isLandscape {
+            return (view.frame.size.width - (2 * space)) / numberOfImages
+        }
+        return (view.frame.size.height - (2 * space)) / numberOfImages
     }
 }

@@ -12,7 +12,7 @@ import UIKit
 class MemeTableCustomCell: UITableViewCell {
     var title: String?
     
-    @IBOutlet weak var textView: UITextField!
+    @IBOutlet weak var labelView: UILabel!
     @IBOutlet weak var mainImageView: UIImageView!
     
 }

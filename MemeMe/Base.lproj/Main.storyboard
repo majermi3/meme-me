@@ -39,38 +39,39 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemeCustomCell" id="Hwn-qh-w1a" customClass="MemeTableCustomCell" customModule="MemeMe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="106.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hwn-qh-w1a" id="Ztw-cZ-3Bw">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="106.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Km-oo-V6B">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Km-oo-V6B">
+                                                    <rect key="frame" x="0.0" y="3" width="100" height="100.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="Mio-HC-M54"/>
                                                         <constraint firstAttribute="width" constant="100" id="SQk-3k-Y4h"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xVI-bk-iNW" userLabel="Text">
-                                                    <rect key="frame" x="120" y="0.0" width="294" height="100.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAl-Km-Jew">
+                                                    <rect key="frame" x="120" y="3" width="274" height="100.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="xVI-bk-iNW" firstAttribute="leading" secondItem="5Km-oo-V6B" secondAttribute="trailing" constant="20" id="4Af-8V-1oq"/>
-                                                <constraint firstItem="xVI-bk-iNW" firstAttribute="top" secondItem="Ztw-cZ-3Bw" secondAttribute="top" id="OOU-un-3yl"/>
-                                                <constraint firstAttribute="bottom" secondItem="xVI-bk-iNW" secondAttribute="bottom" id="euc-2u-ZOF"/>
-                                                <constraint firstAttribute="bottom" secondItem="5Km-oo-V6B" secondAttribute="bottom" id="fEO-f0-uDo"/>
+                                                <constraint firstAttribute="bottom" secondItem="bAl-Km-Jew" secondAttribute="bottom" constant="3" id="23y-EY-MMz"/>
+                                                <constraint firstItem="bAl-Km-Jew" firstAttribute="top" secondItem="Ztw-cZ-3Bw" secondAttribute="top" constant="3" id="KUQ-Hf-Vu0"/>
+                                                <constraint firstItem="bAl-Km-Jew" firstAttribute="leading" secondItem="5Km-oo-V6B" secondAttribute="trailing" constant="20" id="RTX-PE-0G5"/>
+                                                <constraint firstItem="bAl-Km-Jew" firstAttribute="trailing" secondItem="Ztw-cZ-3Bw" secondAttribute="trailing" constant="-20" id="Wco-fy-vLg"/>
+                                                <constraint firstAttribute="bottom" secondItem="5Km-oo-V6B" secondAttribute="bottom" constant="3" id="fEO-f0-uDo"/>
                                                 <constraint firstItem="5Km-oo-V6B" firstAttribute="leading" secondItem="Ztw-cZ-3Bw" secondAttribute="leading" id="fef-2n-Meb"/>
-                                                <constraint firstAttribute="trailing" secondItem="xVI-bk-iNW" secondAttribute="trailing" id="h9u-xQ-qX2"/>
-                                                <constraint firstItem="5Km-oo-V6B" firstAttribute="top" secondItem="Ztw-cZ-3Bw" secondAttribute="top" id="xt9-wp-DP4"/>
+                                                <constraint firstItem="5Km-oo-V6B" firstAttribute="top" secondItem="Ztw-cZ-3Bw" secondAttribute="top" constant="3" id="xt9-wp-DP4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="labelView" destination="bAl-Km-Jew" id="4GJ-fQ-sro"/>
                                             <outlet property="mainImageView" destination="5Km-oo-V6B" id="l70-CB-vM5"/>
-                                            <outlet property="textView" destination="xVI-bk-iNW" id="kqa-lm-87o"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -103,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3XY-FR-4V6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1261" y="-315"/>
+            <point key="canvasLocation" x="-1262.3188405797102" y="-315.40178571428572"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OnS-dp-tKS">
@@ -259,15 +260,24 @@
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="146"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DZA-G4-lAe">
-                                            <rect key="frame" x="-47" y="8" width="240" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZA-G4-lAe">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="146"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="150" id="agh-fs-lKI"/>
+                                                <constraint firstAttribute="height" constant="150" id="hzk-yC-IeX"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="DZA-G4-lAe" secondAttribute="bottom" id="XEU-cO-Q3m"/>
+                                        <constraint firstItem="DZA-G4-lAe" firstAttribute="top" secondItem="bdC-c0-XRq" secondAttribute="top" id="gUE-lV-0ad"/>
+                                        <constraint firstItem="DZA-G4-lAe" firstAttribute="leading" secondItem="bdC-c0-XRq" secondAttribute="leading" id="k4P-nA-HEs"/>
+                                        <constraint firstAttribute="trailing" secondItem="DZA-G4-lAe" secondAttribute="trailing" id="n7E-0J-Z5S"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="200" height="146"/>
                                 <connections>
-                                    <outlet property="memeImageView" destination="DZA-G4-lAe" id="rZp-ZF-FSN"/>
+                                    <outlet property="memeImageView" destination="DZA-G4-lAe" id="2MA-tO-ovR"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

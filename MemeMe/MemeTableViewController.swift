@@ -30,7 +30,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let meme = memes[indexPath.row]
         
         cell.mainImageView.image = meme.memedImage
-        cell.textView.text = "\(meme.topText) ... \(meme.bottomText)"
+        cell.labelView.text = "\(meme.topText) ... \(meme.bottomText)"
         
         return cell
     }
