@@ -11,6 +11,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var topToolbarView: UIToolbar!
@@ -23,6 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        shareButton.isEnabled = false
         
         setUpTextField(topTextField, text: "TOP")
         setUpTextField(bottomTextField, text: "BOTTOM")
@@ -39,6 +41,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.image = image
         }
+        shareButton.isEnabled = true
         dismiss(animated: true)
     }
     
@@ -135,8 +138,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         controller.completionWithItemsHandler = { activity, completed, items, error in
             if completed {
-               self.save(memedImage: memedImage)
-               self.dismiss(animated: true, completion: nil)
+                self.save(memedImage: memedImage)
+                self.navigationController?.popViewController(animated: true)
             }
         }
         

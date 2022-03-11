@@ -212,6 +212,7 @@
                         <outlet property="bottomTextField" destination="5TP-0D-2Zx" id="xEf-vb-Ssf"/>
                         <outlet property="cameraButton" destination="CT6-eu-E0E" id="mIk-q9-utX"/>
                         <outlet property="imageView" destination="ndJ-Km-cdv" id="TVd-9z-Opy"/>
+                        <outlet property="shareButton" destination="NZA-DF-jmb" id="fJo-0y-LCw"/>
                         <outlet property="toolbarView" destination="wtw-1c-ioO" id="Zgf-bc-q6z"/>
                         <outlet property="topTextField" destination="FE6-OB-J0c" id="3Ek-Ff-RNB"/>
                         <outlet property="topToolbarView" destination="GjF-8v-psB" id="q4m-ZO-ZwF"/>
