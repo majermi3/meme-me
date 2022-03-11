@@ -10,24 +10,29 @@ import UIKit
 
 class MemeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    var memes: [Meme]! {
+        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
+        return appDelegate.memes
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getMemes().count
+        return memes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableCell")!
-        let memes = getMemes()
         let meme = memes[indexPath.row]
         
         cell.imageView?.image = meme.memedImage
         cell.textLabel?.text = "\(meme.topText) ... \(meme.bottomText)"
         
         return cell
-    }
-    
-    func getMemes() -> [Meme] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.memes
     }
     
     @IBAction func showAddView(_ sender: Any) {

@@ -11,13 +11,23 @@ import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
     
+    @IBOutlet var memeCollectionView: UICollectionView!
+    
+    var memes: [Meme]! {
+        let appDelegate = UIApplication.shared.delegate  as! AppDelegate
+        return appDelegate.memes
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        memeCollectionView.reloadData()
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return getMemes().count
+        return memes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
-        let memes = getMemes()
         let meme = memes[indexPath.row]
         
         cell.memeImageView.image = meme.memedImage
@@ -28,11 +38,6 @@ class MemeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         
-    }
-    
-    func getMemes() -> [Meme] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.memes
     }
     
     @IBAction func showAddView(_ sender: Any) {
