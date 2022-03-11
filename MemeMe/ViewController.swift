@@ -26,11 +26,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         setUpTextField(bottomTextField, text: "BOTTOM")
         
         subscribeToKeyboardNotifications()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -135,7 +137,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         controller.completionWithItemsHandler = { _, completed, _, _ in
             if completed {
                 self.save(memedImage: memedImage)
-                self.navigationController?.popViewController(animated: true)
+                self.returnToPreviousView()
             }
         }
         
@@ -171,5 +173,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     func toggleToolbars(hide isHidden: Bool) {
         toolbarView.isHidden = isHidden
         topToolbarView.isHidden = isHidden
+    }
+    
+    @IBAction func returnToPreviousViewAction(_ sender: Any) {
+        returnToPreviousView()
+    }
+    
+    func returnToPreviousView() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

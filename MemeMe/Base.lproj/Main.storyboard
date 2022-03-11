@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-2390" y="-315"/>
         </scene>
-        <!--Sent memes list-->
+        <!--Sent memes-->
         <scene sceneID="ntX-PZ-wWK">
             <objects>
                 <viewController storyboardIdentifier="MemeTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xPm-rh-6Tl" customClass="MemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -90,7 +90,7 @@
                             <constraint firstItem="H39-2P-nfm" firstAttribute="top" secondItem="Xhe-9x-dOH" secondAttribute="top" id="ryw-iN-mj5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sent memes list" id="lwY-OO-cqv">
+                    <navigationItem key="navigationItem" title="Sent memes" id="lwY-OO-cqv">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Z80-fi-IBd"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Vmf-Vs-zkz">
                             <connections>
@@ -144,7 +144,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="jdG-eh-d6f" userLabel="Space"/>
-                                    <barButtonItem title="Cancel" id="gES-k6-pV1"/>
+                                    <barButtonItem title="Cancel" id="gES-k6-pV1">
+                                        <connections>
+                                            <action selector="returnToPreviousViewAction:" destination="BYZ-38-t0r" id="5eW-a0-XrD"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ndJ-Km-cdv" userLabel="Image">
@@ -207,7 +211,6 @@
                             <constraint firstItem="wtw-1c-ioO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uuX-J0-ZQN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0x2-FT-OVo"/>
                     <connections>
                         <outlet property="bottomTextField" destination="5TP-0D-2Zx" id="xEf-vb-Ssf"/>
                         <outlet property="cameraButton" destination="CT6-eu-E0E" id="mIk-q9-utX"/>
