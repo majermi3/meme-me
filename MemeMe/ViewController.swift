@@ -150,6 +150,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
             originalImage: imageView.image!,
             memedImage: memedImage
         )
+        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     func generateMemedImage() -> UIImage {
