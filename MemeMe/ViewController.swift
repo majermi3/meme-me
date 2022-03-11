@@ -17,10 +17,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     @IBOutlet weak var topToolbarView: UIToolbar!
     @IBOutlet weak var toolbarView: UIToolbar!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -136,7 +132,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     @IBAction func shareImage(_ sender: Any) {
         let memedImage = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
-        controller.completionWithItemsHandler = { activity, completed, items, error in
+        controller.completionWithItemsHandler = { _, completed, _, _ in
             if completed {
                 self.save(memedImage: memedImage)
                 self.navigationController?.popViewController(animated: true)
