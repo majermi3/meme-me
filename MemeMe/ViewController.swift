@@ -17,6 +17,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     @IBOutlet weak var topToolbarView: UIToolbar!
     @IBOutlet weak var toolbarView: UIToolbar!
     
+    @IBOutlet weak var cropView: CropView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -158,6 +164,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     }
     
     func generateMemedImage() -> UIImage {
+        let cropImage = !cropView.isHidden
+        
         toggleToolbars(hide: true)
 
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -167,12 +175,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         
         toggleToolbars(hide: false)
 
+        if cropImage {
+            var frame = cropView.outerRect.frame
+            frame.origin.y += topToolbarView.frame.origin.y + topToolbarView.frame.height
+            let croppedCGImage = memedImage.cgImage?.cropping(to: frame)
+            
+            return UIImage(cgImage: croppedCGImage!)
+        }
         return memedImage
     }
     
     func toggleToolbars(hide isHidden: Bool) {
         toolbarView.isHidden = isHidden
         topToolbarView.isHidden = isHidden
+        cropView.isHidden = isHidden
+    }
+    @IBAction func toggleCropView(_ sender: Any) {
+        let isHidden = !cropView.isHidden
+        
+        cropView.isHidden = isHidden
+        topTextField.isEnabled = isHidden
+        bottomTextField.isEnabled = isHidden
     }
     
     @IBAction func returnToPreviousViewAction(_ sender: Any) {
