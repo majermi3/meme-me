@@ -22,10 +22,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     
     @IBOutlet weak var cropView: CropView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -40,6 +36,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         cropView.drawCropper()
     }
     
