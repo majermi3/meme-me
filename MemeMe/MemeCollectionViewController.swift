@@ -52,8 +52,16 @@ class MemeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let meme = memes[indexPath.row]
+        openDetailView(meme)
+    }
+    
+    func openDetailView(_ meme: Meme) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
+        controller.meme = meme
         
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func showAddView(_ sender: Any) {

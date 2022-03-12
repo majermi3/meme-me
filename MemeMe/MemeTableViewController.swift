@@ -35,6 +35,20 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let meme = memes[indexPath.row]
+        
+        openDetailView(meme)
+    }
+    
+    func openDetailView(_ meme: Meme) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        
+        controller.meme = meme
+        
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     @IBAction func showAddView(_ sender: Any) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         
