@@ -2,7 +2,7 @@
 //  DetailViewController.swift
 //  MemeMe
 //
-//  Created by Gökce Hatipoglu Majernik on 3/11/22.
+//  Created by Michal Majernik on 3/11/22.
 //
 
 import Foundation

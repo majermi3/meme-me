@@ -19,15 +19,15 @@ class CropView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     func drawCropper() {
         outerRect = drawRectangle()
-        leftTopCorner = drawCorner(x: self.bounds.origin.x, y: self.bounds.origin.y)
-        leftBottomCorner = drawCorner(x: self.bounds.origin.x, y: self.bounds.height - cornerSize)
-        rightTopCorner = drawCorner(x: self.bounds.width - cornerSize, y: self.bounds.origin.y)
-        rightBottomCorner = drawCorner(x: self.bounds.width - cornerSize, y: self.bounds.height - cornerSize)
+        leftTopCorner = drawCorner(x: bounds.origin.x, y: bounds.origin.y)
+        leftBottomCorner = drawCorner(x: bounds.origin.x, y: bounds.height - cornerSize)
+        rightTopCorner = drawCorner(x: bounds.width - cornerSize, y: bounds.origin.y)
+        rightBottomCorner = drawCorner(x: bounds.width - cornerSize, y: bounds.height - cornerSize)
         
         leftTopCorner.id = "leftTop"
         leftTopCorner.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(cornerDragged)))
@@ -41,11 +41,11 @@ class CropView: UIView {
         rightBottomCorner.id = "rightBottom"
         rightBottomCorner.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(cornerDragged)))
         
-        self.addSubview(outerRect)
-        self.addSubview(leftTopCorner)
-        self.addSubview(rightTopCorner)
-        self.addSubview(leftBottomCorner)
-        self.addSubview(rightBottomCorner)
+        addSubview(outerRect)
+        addSubview(leftTopCorner)
+        addSubview(rightTopCorner)
+        addSubview(leftBottomCorner)
+        addSubview(rightBottomCorner)
     }
     
     func redraw() {
@@ -59,7 +59,7 @@ class CropView: UIView {
     }
     
     func drawRectangle() -> RectView {
-        let rect = RectView(frame: self.bounds)
+        let rect = RectView(frame: bounds)
         rect.backgroundColor = UIColor.white.withAlphaComponent(0.0)
         
         return rect

@@ -32,7 +32,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         setUpTextField(bottomTextField, text: "BOTTOM")
         
         subscribeToKeyboardNotifications()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,7 +43,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -179,8 +179,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         
         toggleToolbars(hide: true)
 
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
@@ -215,6 +215,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
     }
     
     func returnToPreviousView() {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }

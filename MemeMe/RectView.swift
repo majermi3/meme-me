@@ -14,7 +14,7 @@ class RectView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
     }
 
     required public init?(coder aDecoder: NSCoder) {
