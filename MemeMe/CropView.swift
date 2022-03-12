@@ -19,7 +19,7 @@ class CropView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        drawCropper()
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func drawCropper() {
@@ -46,6 +46,16 @@ class CropView: UIView {
         self.addSubview(rightTopCorner)
         self.addSubview(leftBottomCorner)
         self.addSubview(rightBottomCorner)
+    }
+    
+    func redraw() {
+        outerRect?.removeFromSuperview()
+        leftTopCorner?.removeFromSuperview()
+        rightTopCorner?.removeFromSuperview()
+        leftBottomCorner?.removeFromSuperview()
+        rightBottomCorner?.removeFromSuperview()
+        
+        drawCropper()
     }
     
     func drawRectangle() -> RectView {

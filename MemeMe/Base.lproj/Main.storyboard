@@ -226,6 +226,7 @@
                     <connections>
                         <outlet property="bottomTextField" destination="5TP-0D-2Zx" id="xEf-vb-Ssf"/>
                         <outlet property="cameraButton" destination="CT6-eu-E0E" id="mIk-q9-utX"/>
+                        <outlet property="cropButton" destination="WC0-tD-Ahl" id="InQ-RN-BXX"/>
                         <outlet property="cropView" destination="RGV-Bh-KdN" id="lsX-eC-zNQ"/>
                         <outlet property="imageView" destination="ndJ-Km-cdv" id="TVd-9z-Opy"/>
                         <outlet property="shareButton" destination="NZA-DF-jmb" id="fJo-0y-LCw"/>

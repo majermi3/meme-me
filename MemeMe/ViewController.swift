@@ -9,9 +9,12 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavigationControllerDelegate, UITextFieldDelegate {
     
+    var cropViewNeedsRedraw = false
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cropButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var topToolbarView: UIToolbar!
@@ -27,6 +30,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         shareButton.isEnabled = false
+        cropButton.isEnabled = false
         
         setUpTextField(topTextField, text: "TOP")
         setUpTextField(bottomTextField, text: "BOTTOM")
@@ -35,17 +39,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        cropView.drawCropper()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if cropViewNeedsRedraw {
+            cropView.redraw()
+            cropViewNeedsRedraw = false
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        cropViewNeedsRedraw = true
+    }
+            
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageView.image = image
         }
         shareButton.isEnabled = true
+        cropButton.isEnabled = true
         dismiss(animated: true)
     }
     
@@ -190,6 +213,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate,  UINavi
         topToolbarView.isHidden = isHidden
         cropView.isHidden = isHidden
     }
+    
     @IBAction func toggleCropView(_ sender: Any) {
         let isHidden = !cropView.isHidden
         
